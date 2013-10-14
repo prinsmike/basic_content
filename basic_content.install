@@ -1,0 +1,175 @@
+<?php
+
+function basic_content_install() {
+  _basic_content_setup_variables();
+  _basic_content_install_imce();
+}
+
+function _basic_content_setup_variables() {
+  // Pathauto
+  variable_set('pathauto_node_article_pattern', 'article/[node:title]');
+  variable_set('pathauto_node_page_pattern', 'page/[node:title]');
+  variable_set('pathauto_node_resource_pattern', 'resource/[node:title]');
+}
+
+function _basic_content_install_imce() {
+  $imce_profiles = array
+    (
+    1 => array
+      (
+      'name' => 'User-1',
+      'usertab' => '1',
+      'filesize' => '0',
+      'quota' => '0',
+      'tuquota' => '0',
+      'extensions' => '*',
+      'dimensions' => '1200x1200',
+      'filenum' => '0',
+      'directories' => array
+        (
+        0 => array
+          (
+          'name' => '.',
+          'subnav' => '1',
+          'browse' => '1',
+          'upload' => '1',
+          'thumb' => '1',
+          'delete' => '1',
+          'resize' => '1',
+        ),
+      ),
+      'thumbnails' => array
+        (
+        0 => array
+          (
+          'name' => 'Small',
+          'dimensions' => '100x100',
+          'prefix' => 'small_',
+          'suffix' => '',
+        ),
+        1 => array
+          (
+          'name' => 'Medium',
+          'dimensions' => '250x250',
+          'prefix' => 'medium_',
+          'suffix' => '',
+        ),
+        2 => array
+          (
+          'name' => 'Large',
+          'dimensions' => '500x500',
+          'prefix' => 'large_',
+          'suffix' => '',
+        ),
+      ),
+    ),
+    2 => array
+      (
+      'name' => 'Sample profile',
+      'usertab' => '1',
+      'filesize' => '1',
+      'quota' => '2',
+      'tuquota' => '0',
+      'extensions' => 'gif png jpg jpeg',
+      'dimensions' => '800x600',
+      'filenum' => '1',
+      'directories' => array
+        (
+        0 => array
+          (
+          'name' => 'u%uid',
+          'subnav' => '0',
+          'browse' => '1',
+          'upload' => '1',
+          'thumb' => '1',
+          'delete' => '0',
+          'resize' => '0',
+        ),
+      ),
+      'thumbnails' => array
+        (
+        0 => array
+          (
+          'name' => 'Thumb',
+          'dimensions' => '90x90',
+          'prefix' => 'thumb_',
+          'suffix' => '',
+        ),
+      ),
+    ),
+    3 => array
+      (
+      'name' => 'Manager',
+      'usertab' => '1',
+      'filesize' => '1',
+      'quota' => '50',
+      'tuquota' => '50',
+      'extensions' => 'gif png jpg jpeg',
+      'dimensions' => '1024x768',
+      'filenum' => '1',
+      'directories' => array
+        (
+        0 => array
+          (
+          'name' => 'u%uid',
+          'subnav' => '0',
+          'browse' => '1',
+          'upload' => '1',
+          'thumb' => '1',
+          'delete' => '1',
+          'resize' => '1',
+        ),
+      ),
+      'thumbnails' => array
+        (
+        0 => array
+          (
+          'name' => 'Small',
+          'dimensions' => '100x100',
+          'prefix' => 'small_',
+          'suffix' => '',
+        ),
+        1 => array
+          (
+          'name' => 'Medium',
+          'dimensions' => '250x250',
+          'prefix' => 'medium_',
+          'suffix' => '',
+        ),
+        2 => array
+          (
+          'name' => 'Large',
+          'dimensions' => '500x500',
+          'prefix' => 'large_',
+          'suffix' => '',
+        ),
+      ),
+    ),
+  );
+  variable_set('imce_profiles', $imce_profiles);
+
+  $imce_roles_profiles = array
+    (
+    4 => array
+      (
+      'weight' => '0',
+      'public_pid' => '3',
+    ),
+    3 => array
+      (
+      'weight' => '0',
+      'public_pid' => '1',
+    ),
+    2 => array
+      (
+      'weight' => '11',
+      'public_pid' => '0',
+    ),
+    1 => array
+      (
+      'weight' => '12',
+      'public_pid' => '0',
+    ),
+  );
+  variable_set('imce_roles_profiles', $imce_roles_profiles);
+}
